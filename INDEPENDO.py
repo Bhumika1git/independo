@@ -1,10 +1,8 @@
 import streamlit as st
 from streamlit.components.v1 import html
 
-# ---------------- CONFIG ----------------
-st.set_page_config(page_title="INDEPENDO", page_icon="🤍", layout="wide")
+st.set_page_config(page_title="INDEPENDO", page_icon="*", layout="wide")
 
-# ---------------- SESSION ----------------
 if "page" not in st.session_state:
     st.session_state.page = "name"
 
@@ -14,7 +12,6 @@ if "favourites" not in st.session_state:
 if "roadmap_text" not in st.session_state:
     st.session_state.roadmap_text = ""
 
-# ---------------- STYLES ----------------
 st.markdown("""
 <style>
 .main {background:#0b1220;}
@@ -28,7 +25,6 @@ h1,h2,h3,h4,p,li,label {color:#e5e7eb !important;}
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- CAROUSEL ----------------
 def carousel(height="90vh"):
     html(f"""
     <style>
@@ -53,7 +49,6 @@ def carousel(height="90vh"):
     </div></div>
     """, height=600)
 
-# ---------------- HEADER ----------------
 left, mid, right = st.columns([2,6,2])
 
 with left:
@@ -78,14 +73,10 @@ with right:
     for f in st.session_state.favourites:
         st.caption("⭐ " + f)
 
-# ---------------- BRAND ----------------
 st.markdown("<h1 style='text-align:center;'>INDEPENDO</h1>", unsafe_allow_html=True)
 st.markdown("<h4 style='text-align:center;color:#93c5fd;'>your personalized path to skill, clarity and confidence</h4>", unsafe_allow_html=True)
 st.info("🔐 Your data stays only with you. We do NOT store anything.")
 
-# ======================================================
-# PAGE 1 — NAME
-# ======================================================
 if st.session_state.page == "name":
 
     st.markdown("### 🌟 “Don’t wait for opportunity. Create it.”")
@@ -98,9 +89,6 @@ if st.session_state.page == "name":
         st.session_state.page = "skill"
         st.rerun()
 
-# ======================================================
-# PAGE 2 — SKILL + LEVEL
-# ======================================================
 elif st.session_state.page == "skill":
 
     st.markdown(f"## Welcome, {st.session_state.name} 💙")
@@ -127,9 +115,7 @@ elif st.session_state.page == "skill":
                 st.session_state.page = "roadmap"
                 st.rerun()
 
-# ======================================================
-# PAGE 3 — ROADMAP
-# ======================================================
+
 elif st.session_state.page == "roadmap":
 
     skill = st.session_state.skill
@@ -208,9 +194,6 @@ elif st.session_state.page == "roadmap":
         st.session_state.page = "final"
         st.rerun()
 
-# ======================================================
-# PAGE 4 — FINAL
-# ======================================================
 elif st.session_state.page == "final":
 
     st.success("🎉 Your journey has started.")
