@@ -96,4 +96,4 @@ if st.session_state.page == "name":
         safe_rerun()
 
 elif st.session_state.page == "skill":
-    st.markdown(f"## Welcome, {st
+    st.markdown(f"## Welcome, {st.session_state.name} 💙")
